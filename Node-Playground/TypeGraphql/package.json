@@ -1,0 +1,31 @@
+{
+  "name": "typegraphql",
+  "version": "1.0.0",
+  "description": "Um teste de typescript com graphql",
+  "main": "src/app.ts",
+  "author": "Drack112",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "dev": "ts-node-dev src/app.ts"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.16.0",
+    "@typescript-eslint/parser": "^5.16.0",
+    "eslint": "^8.12.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.6.1",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.6.3"
+  },
+  "dependencies": {
+    "apollo-server": "^3.6.6",
+    "dotenv": "^16.0.0",
+    "mongoose": "^6.2.8",
+    "reflect-metadata": "^0.1.13",
+    "type-graphql": "^1.1.1"
+  }
+}
