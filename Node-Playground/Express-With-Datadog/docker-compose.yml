@@ -1,0 +1,45 @@
+version: "3"
+
+services:
+  db:
+    image: mongo:latest
+    container_name: mongo-server
+    environment:
+      MONGO_INITDB_DATABASE: ${MONGO_DB}
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+    ports:
+      - 27017:27017
+    networks:
+      - mongo-compose-network
+
+  redis:
+    image: redis
+    command: redis-server
+    container_name: redis-server
+    environment:
+      ALLOW_EMPTY_PASSWORD: ${REDIS_ENABLE_PASSWORD}
+      #- REDIS_PASSWORD=123
+      # -REDIS_MASTER_PASSWORD=1234
+    ports:
+      - "6379:6379"
+    links:
+      - db
+    depends_on:
+      - db
+    networks:
+      - mongo-compose-network
+
+  app:
+    build: .
+    container_name: backend-express
+    depends_on:
+      - db
+    ports:
+      - 8000:8000
+    networks:
+      - mongo-compose-network
+
+networks:
+  mongo-compose-network:
+    driver: bridge
